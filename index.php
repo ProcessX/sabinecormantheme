@@ -1,3 +1,9 @@
+<?php 
+    /*
+    * The main template file
+    */
+?>
+
 <!doctype html>
 <html lang="fr">
     <head>
