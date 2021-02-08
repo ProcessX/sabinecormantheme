@@ -1,0 +1,167 @@
+@use './lib';
+
+
+
+header{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+
+    .navbar{
+        text-transform: uppercase;
+
+        &--open{
+        }
+
+        .link__li{
+
+            .link__el{
+
+    
+                &:first-child{
+                }
+
+                &:after{
+
+                }
+
+                &:last-child{
+                    &:after{
+                    }
+                }
+
+                .link{
+                    
+
+                    &:before{
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include lib.smallerThan-tablet-large{
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 1000;
+
+        .navbar{
+            background-color: lib.$blue;
+            color: lib.$ivory-light;
+            font-family: 'Playfair Display', serif;
+            text-transform: uppercase;
+            font-size: 2rem;
+            line-height: 1em;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translateX(100vw);
+            transition-duration: lib.$anim-burger-duration;
+            transition-property: transform;
+
+            &--open{
+                transform: translateX(0);
+            }
+
+            .link__li{
+                counter-reset: index-menu;
+                vertical-align: center;
+
+                .link__el{
+                    text-align: center;
+                    padding: 1rem 0;
+                    position: relative;
+
+                    .link{
+                        counter-increment: index-menu;
+                        color: inherit;
+                        position: relative;
+                        line-height: 10px;
+
+                        &:before{
+                            content: counter(index-menu);
+                            line-height: 1em;
+                            height: 1em;
+                            margin-top: 0.55em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include lib.only-tablet{
+        .navbar{
+            font-size: 3.5rem;
+
+            .link__li{
+
+                .link__el{
+
+                    .link{
+
+                        &:before{
+                            margin-top: 1.1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include lib.tablet-large{
+        width: 100%;
+        background-color: lib.$ivory;
+
+        .btn--burger{
+            display: none;
+        }
+
+        .navbar{
+            max-width: 1440px;
+            margin: auto;
+            padding: 1rem 3rem;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+
+            /*
+            &::after{
+                content: "";
+                height: 2px;
+                width: calc(100% - 6rem);
+                position: absolute;
+                bottom: 0;
+                left: 3rem;
+                background-color: lib.$blue;
+            }
+            */
+
+
+            .link__li{
+                display: flex;
+
+                .link__el{
+
+                    &:first-child{
+                        flex-grow: 2;
+                    }
+
+                    &:not(:first-child){
+                        margin-left: 3rem;
+                    }
+                }
+            }
+        }
+    }
+}

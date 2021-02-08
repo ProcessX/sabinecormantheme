@@ -1,0 +1,212 @@
+@use '../lib';
+
+.block.block--about{
+    .about__mugshot{
+        max-width: 100%;
+    }
+
+    .about__details{
+        margin-top: 8rem;
+
+        .details__title{
+            margin: 0;
+            padding-bottom: 1rem;
+            position: relative;
+
+            &::after{
+                content: "";
+                width: 100%;
+                height: 1px;
+                background-color: lib.$blue;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+
+        .details__li{
+
+            .details__el{
+                position: relative;
+                padding: 1rem 0;
+
+                &:after{
+                    content: "";
+                    height: 1px;
+                    width: 100%;
+                    background-color: lib.$ivory-dark;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+    }
+
+
+    @include lib.tablet{
+        .about__mugshot{
+            grid-column: 3/11;
+        }
+
+        .para{
+            grid-column: 2/12;
+        }
+
+        .about__details{
+            grid-column: 2/12;
+        }
+    }
+
+
+    @include lib.tablet-large{
+        .about__mugshot{
+            grid-column: -1/-10;
+            grid-row: 2/5;
+        }
+
+        .para{
+            grid-column: 1/12;
+            margin-top: 0;
+            margin-bottom: 1rem;
+
+            &:first-of-type{
+                margin-top: 6rem;
+                margin-bottom: 2rem;
+            }
+
+            &:last-of-type{
+                margin-bottom: 0;
+            }
+        }
+
+        .about__details{
+            grid-column: 1/12;
+            margin-top: 10rem;
+
+            &--relatives{
+                grid-column: -1/-12;
+            }
+        }
+    }
+
+
+    @include lib.desktop{
+        .about__mugshot{
+            grid-column: -1/-12;
+        }
+
+        .para{
+            &:first-of-type{
+                margin-top: 8rem;
+            }
+        }
+
+        .about__details{
+            
+        }
+    }
+
+}
+
+
+
+.about__details--career{
+    .career__year{
+        margin: 0;
+        font-size: 1.24rem;
+    }
+
+    .career__li{
+
+        .career__el{
+            padding-left: 1rem;
+
+            .career__step{
+                margin: 1rem 0 0 0;
+            }
+        }
+    }
+
+
+    @include lib.tablet{
+
+        .details__el{
+            display: flex;
+
+            .career__year{
+                margin-right: 3rem;
+            }
+        
+            .career__li{
+        
+                .career__el{
+                    padding-left: 0;
+
+                    &:first-child{
+
+                        .career__step{
+                            margin-top: 0;
+                        }
+                    }
+        
+                    .career__step{
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include lib.tablet-large{
+
+        .details__el{
+
+            .career__year{
+            }
+        
+            .career__li{
+        
+                .career__el{
+
+                    &:first-child{
+
+                        .career__step{
+                        }
+                    }
+        
+                    .career__step{
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include lib.desktop{
+        margin-top: 20rem !important;
+
+        .details__el{
+
+            .career__year{
+            }
+        
+            .career__li{
+        
+                .career__el{
+
+                    &:first-child{
+
+                        .career__step{
+                        }
+                    }
+        
+                    .career__step{
+                    }
+                }
+            }
+        }
+    }
+}
+
+

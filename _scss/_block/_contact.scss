@@ -1,0 +1,83 @@
+@use '../lib';
+
+$contact-icon-size: 5rem;
+
+.block.block--contact{
+
+    .contact__li{
+
+        .contact__el{
+            text-align: center;
+            margin-bottom: 4rem;
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+
+            &:last-child{
+                margin: 0;
+            }
+
+            .contact{
+                
+
+                &--mail{
+                }
+
+                &--phone{
+                    font-style: italic;
+                }
+            }
+        }
+    }
+
+
+    @include lib.mobile-only{
+        .contact__li{
+
+            .contact__el{
+                text-align: center;
+                margin-bottom: 4rem;
+    
+                &:last-child{
+                    margin: 0;
+                }
+    
+                .contact{
+                    display: inline-block;
+                    height: $contact-icon-size;
+                    width: $contact-icon-size;
+                    max-height: $contact-icon-size;
+                    max-width: $contact-icon-size;
+                    overflow: hidden;
+                    text-indent: 100%;
+    
+                    background-repeat: no-repeat;
+                    background-size: contain;
+    
+                    &--mail{
+                        background-image: url('./asset/icon/mail.svg');
+                    }
+    
+                    &--phone{
+                        background-image: url('./asset/icon/phone.svg');
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include lib.tablet{
+
+        .contact__li{
+            grid-column: 1/13;
+        }
+    }
+
+
+    @include lib.tablet-large{
+
+        .contact__li{
+            grid-column: 1/-1;
+        }
+    }
+}

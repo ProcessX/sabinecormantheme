@@ -1,0 +1,114 @@
+@use '../lib';
+
+.block.block--intro{
+    margin-top: 16rem;
+    display: grid;
+    grid-template-columns: auto min-content auto;
+
+    .intro__title{
+        line-height: 1em;
+        text-transform: none;
+        grid-column: 2/3;
+        text-align: center;
+        margin-bottom: 0;
+        white-space: nowrap;
+
+        .title--home{
+            display: block;
+            position: relative;
+
+            &--upperline{
+                //padding-bottom: 0.16em;
+                //margin-bottom: 0.03em;
+
+                &::after{
+                    content: "";
+                    display: inline-block;
+                    height: 1px;
+                    width: 100%;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    background-color: lib.$blue;
+                }
+            }
+        }
+    }
+
+    .title--section{
+        grid-column: 2/3;
+        white-space: nowrap;
+    }
+
+    .intro__img{
+        max-width: 100%;
+        width: 800px;
+        grid-column: 1/-1;
+        justify-self: center;
+    }
+
+    @include lib.intro-exception{
+        .intro__title{
+            font-size: 3.1rem;
+        }
+    }
+
+
+    @include lib.tablet{
+
+        .intro__title{
+            //grid-column: 1/13;
+            //margin-bottom: 0;
+
+            .title--home{
+
+                &--upperline{
+                    margin-bottom: -0.5rem;
+                    padding-bottom: 0.7rem;
+                }
+            }
+        }
+
+        .intro__img{
+            //grid-column: 2/12;
+        }
+    }
+
+
+    @include lib.tablet-large{
+        margin-top: 24em;
+
+        .intro__title{
+            //grid-column: 1/25;
+            margin-top: 2.25rem;
+
+            .title--home{
+
+                &--upperline{
+                    margin-bottom: -0.65rem;
+                    padding-bottom: 0.9rem;
+                }
+            }
+        }
+
+        .intro__img{
+            //grid-column: 5/21;
+        }
+    }
+
+
+    @include lib.desktop{
+
+        .intro__title{
+            margin-top: 2rem;
+
+            .title--home{
+
+                &--upperline{
+                    margin-bottom: -01.1rem;
+                    padding-bottom: 0.8rem;
+                }
+            }
+        }
+    }
+}

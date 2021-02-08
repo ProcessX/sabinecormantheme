@@ -1,0 +1,10 @@
+@use '../lib';
+
+.block.block--home{
+    margin-bottom: 14rem;
+
+    @include lib.tablet{
+        //display: grid;
+
+    }
+}

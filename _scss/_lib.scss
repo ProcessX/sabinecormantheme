@@ -1,0 +1,82 @@
+//COLORS
+$ivory: #E5DED3;
+$ivory-dark: #D0C7B9;
+$ivory-light: #F1EAE0;
+
+$blue: #1A355D;
+$blue-dark: #091B37;
+
+
+//BREAKING POINTS
+$res-tablet: 768px;
+$res-tablet-large: 1024px;
+$res-desktop: 1280px;
+
+
+//ANIMATION -- BURGER MENU
+$anim-burger-duration: 0.7s;
+
+
+//ANIMATION -- BTN OUTLINE
+$anim-btnOutline-duration: 0.25s;
+
+//ANIMATION -- BTN GALLERY
+$anim-btnGallery-duration: 0.25s;
+
+//ANIMATION -- IMG
+$anim-img-duration: 0.5s;
+
+//ANIMATION -- LINK ARROW
+$anim-linkArrow-duration: 0.25s;
+
+
+
+//QUERIES
+@mixin intro-exception {
+    @media (max-width: 420px) {
+        @content
+    }
+}
+
+
+@mixin mobile-only {
+    @media (max-width: #{$res-tablet - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: #{$res-tablet}) {
+        @content;
+    }
+}
+
+@mixin smallerThan-tablet{
+    @media (max-width: #{$res-tablet - 1px}) {
+        @content;
+    }
+}
+
+@mixin only-tablet {
+    @media (min-width: #{$res-tablet}) and (max-width: #{$res-tablet-large - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet-large {
+    @media (min-width: #{$res-tablet-large}) {
+        @content;
+    }
+}
+
+@mixin smallerThan-tablet-large{
+    @media (max-width: #{$res-tablet-large - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: #{$res-desktop}) {
+        @content;
+    }
+}

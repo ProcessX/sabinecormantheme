@@ -1,0 +1,65 @@
+@use '../lib';
+
+$btn-arrow-width: 1.5rem;
+
+.btn.btn--gallery{
+    display: flex;
+    flex-direction: column;
+
+    &::before{
+        content: "Suivant";
+        text-transform: uppercase;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 16px;
+    }
+
+    &::after{
+        content: "";
+        height: 100%;
+        width: $btn-arrow-width;
+        background-color: red;
+        position: absolute;
+        top: 0;
+        transition-property: transform;
+        transition-duration: lib.$anim-btnGallery-duration;
+    }
+
+    &--next{
+        padding-right: $btn-arrow-width;
+
+        &::before{
+            text-align: right;
+        }
+
+        &::after{
+            right: 0;
+        }
+
+        &:hover{
+
+            &::after{
+                transform: translateX(0.5rem);
+            }
+        }
+    }
+
+    &--back{
+        padding-left: $btn-arrow-width;
+
+        &::before{
+            content: "Retour";
+        }
+
+        &::after{
+            left: 0;
+        }
+
+        &:hover{
+
+            &::after{
+                transform: translateX(-0.5rem);
+            }
+        }
+    }
+
+}

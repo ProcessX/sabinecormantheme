@@ -1,0 +1,97 @@
+@use '../lib';
+
+.block.block--gallery{
+    position: relative;
+
+    &::before{
+        content: "";
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: lib.$blue;
+        margin-bottom: 6rem;
+    }
+
+    .artwork__li{
+        max-width: 100%;
+
+        .artwork__el{
+            margin-bottom: 6rem;
+            
+
+            &:last-child{
+                margin: 0;
+            }
+
+            img{
+                max-width: 100%;
+
+            }
+
+            .artwork__info{
+                display: flex;
+                justify-content: space-between;
+                padding-top: 1rem;
+
+                .artwork__title{
+                    margin: 0 1rem 0 0;
+                    font-weight: normal;
+                    cursor: pointer;
+                }
+
+                .artwork__price{
+                    margin: 0;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    .gallery__nav{
+        display: flex;
+        justify-content: space-between;
+        margin: 10rem 0;
+    }
+
+
+    @include lib.tablet{
+
+        &::before{
+            grid-column: 1/-1;
+        }
+
+        .artwork__li{
+            grid-column: 1/-1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 2rem;
+
+            .artwork__el{
+                grid-column: 1/2;
+
+                &--right{
+                    grid-column: 2/3;
+                }
+
+                &--big{
+                    grid-column: 1/-1;
+                }
+            }
+        }
+
+        .gallery__nav{
+            grid-column: 1/-1;
+        }
+    }
+
+
+    @include lib.tablet-large{
+        .artwork__li{
+            grid-column: 5/-5;
+        }
+
+        .gallery__nav{
+            grid-column: 5/-5;
+        }
+    }
+}

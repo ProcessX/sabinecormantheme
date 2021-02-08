@@ -1,0 +1,23 @@
+@use './font';
+@use './lib';
+@use './header';
+@use './_btn/btn';
+@use './_block/block';
+@use './_link/link';
+@use './footer';
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: lib.$ivory;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a{
+    text-decoration: none;
+}

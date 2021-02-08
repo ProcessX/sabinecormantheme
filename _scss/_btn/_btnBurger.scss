@@ -1,0 +1,56 @@
+@use '../lib';
+
+
+
+.btn.btn--burger{
+    background-color: lib.$ivory;
+    height: 3rem;
+    width: 3rem;
+    max-height: 3rem;
+    max-width: 3rem;
+    overflow: hidden;
+    text-indent: 100%;
+    padding: 0;
+    margin: 1rem;
+    border: solid 1px lib.$blue;
+    box-sizing: content-box;
+    z-index: 100;
+    position: relative;
+    transition-duration: lib.$anim-burger-duration;
+    transition-property: background-color, border-color;
+    -moz-transition-property: background-color, border-color;
+
+    &::before, &::after{
+        content: "";
+        display: inline-block;
+        height: 2px;
+        width: 2rem;
+        height: 2px;
+        background-color: lib.$blue;
+        position: absolute;
+    }
+
+    &::before{
+        top: 1rem;
+        left: 0.5rem;
+    }
+
+    &::after{
+        bottom: 1rem;
+        left: 0.5rem;
+    }
+
+    &--open{
+        background-color: lib.$blue;
+        border-color: lib.$ivory;
+
+        &::before, &::after{
+            background-color: lib.$ivory-light;
+        }
+    }
+
+    
+    @include lib.tablet{
+        margin: 3rem;
+    }
+}

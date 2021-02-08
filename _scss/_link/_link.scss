@@ -1,0 +1,8 @@
+@use '../lib';
+@use './linkArrow';
+@use './linkAnimated';
+@use './linkImg';
+
+.link{
+    cursor: pointer;
+}

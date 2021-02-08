@@ -1,0 +1,141 @@
+@use './lib';
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    color: lib.$blue;
+}
+
+a{
+    color: inherit;
+}
+
+
+//TITLE
+.title{
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    position: relative;
+    font-weight: 400;
+    line-height: 1em;
+}
+
+.title--1{
+    font-size: 1.5rem;
+}
+
+.title--2{
+    font-size: 2rem;
+
+    @include lib.tablet{
+        font-size: 3.5rem;
+    }
+}
+
+.title--3{
+    font-size: 3.5rem;
+    line-height: 80%;
+
+    @include lib.tablet{
+        font-size: 5rem;
+    }
+
+    @include lib.tablet-large{
+        font-size: 7rem;
+    }
+
+}
+
+.title--4{
+    font-size: 5rem;
+
+    @include lib.tablet{
+        font-size: 9rem;
+    }
+
+    @include lib.tablet-large{
+        font-size: 12rem;
+    }
+
+    @include lib.desktop{
+        font-size: 15rem
+    }
+}
+
+.title--section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 7rem;
+
+    &:before,&:after{
+        content: "";
+        height: 1px;
+        min-width: 10px;
+        background-color: lib.$blue;
+        position: relative;
+        display: block;
+        flex-grow: 2;
+    }
+
+    &:before{
+        margin-right: 0.5rem;
+    }
+
+    &:after{
+        margin-left: 0.5rem;
+    }
+
+    @include lib.tablet{
+        grid-column: 1/13;
+    }
+
+    @include lib.tablet-large{
+        grid-column: 1/25;
+    }
+}
+
+
+
+//PARAGRAPH
+.para{
+    font-size: 1.1rem;
+    line-height: 1.6em;
+}
+
+.para--big{
+    font-size: 1.24rem;
+    font-weight: lighter;
+}
+
+.para--upper{
+    text-transform: uppercase;
+}
+
+
+
+//BTN
+.btn--gallery{
+    font-family: 'Playfair Display', serif;
+    text-transform: uppercase;
+    position: relative;
+    font-weight: 400;
+    line-height: 1em;
+    font-size: 1.5rem;
+}
+
+
+
+//COUNTER
+.withCounter{
+    &:before{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1rem;
+        //line-height: 1em;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: calc(100% + 0.5rem);
+    }
+}

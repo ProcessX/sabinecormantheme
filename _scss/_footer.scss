@@ -1,0 +1,53 @@
+@use './lib';
+
+.block.block--footer{
+
+    .footer__info__li{
+        position: relative;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        &::before{
+            content: "";
+            display: block;
+            height: 1px;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: lib.$blue;
+        }
+
+        .footer__info__el{
+            margin: 0 0 1rem 0;
+            text-align: center;
+
+            &:last-child{
+                margin: 0;
+            }
+
+            .footer__info{
+                margin: 0;
+
+                .link{
+                    text-transform: uppercase;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    @include lib.tablet{
+
+        .footer__info__li{
+            display: flex;
+            justify-content: space-between;
+            grid-column: 1/-1;
+
+            .footer__info__el{
+                margin: 0;
+            }
+        }
+    }
+
+}
