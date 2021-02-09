@@ -1,8 +1,8 @@
+var $ = jQuery.noConflict();
+
 var work__li;
 
 $(document).ready(function(){
-    console.log('Ready');
-
     $('.btn--burger').click(() => {
         toggleBurger();
     });
