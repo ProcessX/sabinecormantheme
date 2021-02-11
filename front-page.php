@@ -12,6 +12,26 @@
     <img src="./asset/img/placeholder-painting.jpg" alt="placeholder-painting" class="intro__img">
 </section>
 
+<?php
+    print('Lolilol');
+    $args = array(
+        'post_type' => 'event'
+    );
+
+    $the_query = new WP_Query( $args );
+    if($the_query->have_posts() ) : 
+        while ( $the_query->have_posts() ) : 
+        $the_query->the_post(); 
+        // content goes here
+        print('Lolilol');
+        endwhile; 
+        wp_reset_postdata(); 
+    else: 
+    endif;
+
+    wp_reset_postdata();
+?>
+
 <section class="block block--event block--home">
     <h2 class="title title--1 title--section">Évévement</h2>
     <img src="./asset/img/placeholder-painting.jpg" alt="placeholder-painting" class="event__img">
