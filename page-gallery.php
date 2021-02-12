@@ -1,6 +1,8 @@
 <?php 
     /*
-    * Single gallery
+    * Template Name: Gallery Page
+    *
+    * @package WordPress
     */
 ?>
 
