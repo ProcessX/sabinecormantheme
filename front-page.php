@@ -12,42 +12,46 @@
     <img src="./asset/img/placeholder-painting.jpg" alt="placeholder-painting" class="intro__img">
 </section>
 
+
 <?php
-    print('Lolilol');
+    //Event block
     $args = array(
-        'post_type' => 'event'
+        'post_type' => 'events'
     );
 
     $the_query = new WP_Query( $args );
     if($the_query->have_posts() ) : 
         while ( $the_query->have_posts() ) : 
-        $the_query->the_post(); 
-        // content goes here
-        print('Lolilol');
-        endwhile; 
+            $the_query->the_post(); ?>
+                <section class="block block--event block--home">
+                    <h2 class="title title--1 title--section">Évévement</h2>
+                    <?php
+                        $img = get_field('event_img');
+                        $imgURL = esc_url($img['url']);
+                        $imgAlt = esc_attr($img['alt']);
+                    ?>
+                    <img src="<?php echo $imgURL; ?>" alt="<?php echo $imgAlt; ?>" class="event__img">
+                    <h3 class="event__title title title--3"><?php the_title(); ?></h3>
+                    <div class="para para--1 event__description"><?php the_content(); ?></div>
+                    <div class="event__info">
+                        <p class="event__date para para--big para--upper">Du <time><?php echo get_field('event_starting_date'); ?></time> au <time><?php echo get_field('event_ending_date'); ?></time></p>
+                        <address class="event__address">
+                            <p class="event__street para para--big para--upper"><?php echo get_field('event_street'); ?></p>
+                            <p class="event__city para para--big para--upper"><?php echo get_field('event_city'); ?></p>
+                        </address>
+                    </div>
+                    <a href="<?php echo get_field('event_link'); ?>" target="_blank" class="btn btn--outline btn--info">Info</a>
+                    
+                </section>
+            <?php endwhile; 
         wp_reset_postdata(); 
     else: 
     endif;
 
     wp_reset_postdata();
+
 ?>
 
-<section class="block block--event block--home">
-    <h2 class="title title--1 title--section">Évévement</h2>
-    <img src="./asset/img/placeholder-painting.jpg" alt="placeholder-painting" class="event__img">
-    <h3 class="event__title title title--3">Exposition</h3>
-    <p class="para para--1 event__description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel
-        viverra ligula, a lacinia purus. Nulla malesuada eleifend eros id.</p>
-    <div class="event__info">
-        <p class="event__date para para--big para--upper">Du <time>02.12</time> au <time>05.03</time></p>
-        <address class="event__address">
-            <p class="event__street para para--big para--upper">Rue du cocher, 19</p>
-            <p class="event__city para para--big para--upper">1360 Perwez</p>
-        </address>
-    </div>
-    <a href="#" class="btn btn--outline btn--info">Info</a>
-
-</section>
 
 <section class="block block--work block--home">
     <h2 class="title title--1 title--section">Travaux</h2>
