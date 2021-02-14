@@ -9,15 +9,23 @@
 <?php get_header() ?>
 
 <section class="block block--galleryInfo">
-    <a href="#" class="link link--arrow link--arrow--back">Retour</a>
-    <h2 class="title title--2">Galerie</h2>
+    <?php
+        if($post->post_parent):
+            $parentURL = get_permalink( $post->post_parent );
+            $parentTitle = get_the_title( $post->post_parent );?>
+            <a href="<?php echo $parentURL; ?>" class="link link--arrow link--arrow--back">Retour</a>
+        <?php endif;
+    ?>
+    <h2 class="title title--2"><?php the_title(); ?></h2>
     <div class="gallery__description">
-        <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend mollis urna, non
-            sollicitudin erat mollis a. Integer urna ligula, facilisis non nibh ac, porta dapibus turpis.</p>
-        <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend mollis urna, non
-            sollicitudin erat mollis a. Integer urna ligula, facilisis non nibh ac, porta dapibus turpis.</p>
+        <?php the_content(); ?>
     </div>
-    <img src="./asset/img/placeholder-painting.jpg" alt="placeholder-painting">
+    <?php
+        $img = get_field('gallery_cover_img');
+        $imgURL = esc_url($img['url']);
+        $imgAlt = esc_attr($img['alt']);
+    ?>
+    <img src="<?php echo $imgURL; ?>" alt="<?php echo $imgAlt; ?>">
 </section>
 
 
@@ -63,9 +71,24 @@
     </ul>
 
     <nav class="gallery__nav">
-        <a href="#" class="btn btn--gallery btn--gallery--back">Dessins</a>
-
-        <a href="#" class="btn btn--gallery btn--gallery--next">Galerie</a>
+        <?php
+            if($post->post_parent):?>
+                <a href="<?php echo $parentURL; ?>" class="btn btn--gallery btn--gallery--back"><?php echo $parentTitle; ?></a>
+            <?php endif;
+        ?>
+        <?php 
+            $siblings = get_pages('parent=' .$post->post_parent);
+            foreach ($siblings as $key=>$sibling){
+                if ($post->ID == $sibling->ID){
+                    $ID = $key;
+                }
+            }
+            $nextSibling = array(
+                'url'=>get_permalink($siblings[$ID+1]->ID),
+                'title'=>get_the_title($siblings[$ID+1]->ID)
+            );
+        ?>
+        <a href="<?php echo $nextSibling['url']; ?>" class="btn btn--gallery btn--gallery--next"><?php echo $nextSibling['title']; ?></a>
     </nav>
 </section>
 
