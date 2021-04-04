@@ -11,7 +11,12 @@
 <section class="block block--intro block--home">
     <h1 class="title title--3 intro__title">Sabine Corman</span></h1>
     <p class="title title--1 title--section title--section--intro">Artiste peintre</p>
-    <img src="./asset/img/placeholder-painting.jpg" alt="placeholder-painting" class="intro__img">
+    <?php
+        $img = get_field('home_img');
+        $imgURL = esc_url($img['url']);
+        $imgAlt = esc_attr($img['alt']);
+    ?>
+    <img src="<?php echo $imgURL; ?>" alt="<?php echo $imgAlt; ?>" class="intro__img">
 </section>
 
 
@@ -55,39 +60,55 @@
 ?>
 
 
-<section class="block block--work block--home">
+<section class="block block--work block--home" id="work">
     <h2 class="title title--1 title--section">Travaux</h2>
     <ul class="work__li">
-        <li class="work__el">
-            <h3 class="work__title title title--3">
-                <a href="#" class="work__link">Dessins</a>
-            </h3>
-            <a href="#" class="work__link work__link--img">
-                <img src="asset/img/placeholder-painting.jpg" alt="placeholder-painting" class="work__img">
-            </a>
-        </li>
-        <li class="work__el">
-            <h3 class="work__title title title--3">
-                <a href="#" class="work__link">Peintures</a>
-            </h3>
-            <a href="#" class="work__link work__link--img">
-                <img src="asset/img/placeholder-painting.jpg" alt="placeholder-painting" class="work__img">
-            </a>
-        </li>
-        <li class="work__el">
-            <h3 class="work__title title title--3">
-                <a href="#" class="work__link">Pastels</a>
-            </h3>
-            <a href="#" class="work__link work__link--img">
-                <img src="asset/img/placeholder-painting.jpg" alt="placeholder-painting" class="work__img">
-            </a>
-        </li>
+        <?php
+            $args = array(
+                'post_type'  => 'page', 
+                'meta_query' => array( 
+                    array(
+                        'key'   => '_wp_page_template', 
+                        'value' => 'page-collection.php'
+                    )
+                )
+            );
+
+            $the_query = new WP_Query($args);
+            if($the_query->have_posts() ) : 
+                while ( $the_query->have_posts() ) : 
+                    $the_query->the_post(); ?>
+                        <li class="work__el">
+                            <h3 class="work__title title title--3">
+                                <a href="<?php the_permalink(); ?>" class="work__link"><?php the_title(); ?></a>
+                            </h3>
+                            <a href="<?php the_permalink(); ?>" class="work__link work__link--img">
+                                <?php
+                                    $collectionImg = get_field('collection_img');
+                                    $collectionImgURL = esc_url($collectionImg['url']);
+                                    $collectionImgAlt = esc_attr($collectionImg['alt']);
+                                ?>
+                                <img class="work__img" src="<?php echo $collectionImgURL; ?>" alt="<?php echo $collectionImgAlt; ?>">
+                            </a>
+                        </li>
+                    <?php endwhile; 
+                wp_reset_postdata(); 
+            endif;
+        ?>
     </ul>
 </section>
 
-<section class="block block--about block--home">
+<section class="block block--about block--home" id='artist'>
     <h2 class="title title--1 title--section">L'artiste</h2>
-    <img src="asset/img/placeholder-mugshot.jpg" alt="placeholder-mugshot" class="about__mugshot">
+    <?php
+        $theArtist = get_field('the_artist');
+        $img = $theArtist['the_artist_mugshot'];
+        $imgURL = esc_url($img['url']);
+        $imgAlt = esc_attr($img['alt']);
+    ?>
+    <img src="<?php echo $imgURL; ?>" alt="<?php echo $imgAlt; ?>" class="about__mugshot">
+    <?php 
+    ?>
     <p class="para para--big para--upper">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eleifend
         mollis urna.</p>
     <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi vel viverra ligula, a lacinia purus.
@@ -136,7 +157,7 @@
     </div>
 </section>
 
-<section class="block block--contact block--home">
+<section class="block block--contact block--home" id="contact">
     <h2 class="title title--1 title--section">Contact</h2>
 
     <ul class="contact__li">
@@ -151,7 +172,7 @@
     </ul>
 </section>
 
-<section class="block block--books block--home">
+<section class="block block--books block--home" id="book">
     <h2 class="title title--1 title--section">Livres</h2>
     <ul class="book__li">
         <li class="book__el">

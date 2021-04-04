@@ -14,19 +14,19 @@
         <nav class="navbar">
             <ul class="link__li">
                 <li class="link__el link__el--logo">
-                    <a href="" class="link withCounter">Accueil</a>
+                    <a href="<?php echo get_home_url(); ?>" class="link withCounter">Accueil</a>
                 </li>
                 <li class="link__el">
-                    <a href="" class="link link--animated withCounter">Travaux</a>
+                    <a href="<?php echo get_home_url(); ?>#work" class="link link--animated withCounter">Travaux</a>
                 </li>
                 <li class="link__el">
-                    <a href="" class="link link--animated withCounter">L'artiste</a>
+                    <a href="<?php echo get_home_url(); ?>#artist" class="link link--animated withCounter">L'artiste</a>
                 </li>
                 <li class="link__el">
-                    <a href="" class="link link--animated withCounter">Contact</a>
+                    <a href="<?php echo get_home_url(); ?>#contact" class="link link--animated withCounter">Contact</a>
                 </li>
                 <li class="link__el">
-                    <a href="" class="link link--animated withCounter">livres</a>
+                    <a href="<?php echo get_home_url(); ?>#book" class="link link--animated withCounter">livres</a>
                 </li>
             </ul>
         </nav>

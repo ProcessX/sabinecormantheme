@@ -6,6 +6,10 @@
 @use './_link/link';
 @use './footer';
 
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     margin: 0;
     padding: 0;
